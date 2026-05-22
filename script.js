@@ -74,10 +74,7 @@
       trigger: '.step-card', start: 'top 80%', once: true,
       onEnter: () => {
         document.querySelectorAll('[data-step-icon]').forEach((icon, i) => {
-          setTimeout(() => {
-            icon.classList.add('pulse');
-            gsap.fromTo(icon, { scale: 1 }, { scale: 1.15, duration: 0.25, yoyo: true, repeat: 1, ease: 'power2.out' });
-          }, i * 180);
+          setTimeout(() => { icon.classList.add('pulse'); }, i * 180);
         });
       }
     });
