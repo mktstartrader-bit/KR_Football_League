@@ -91,7 +91,7 @@
       <span class="ed-est">EST. 2025</span>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 hero-grid items-center mt-12 md:mt-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 hero-grid items-center mt-12 md:mt-14">
 
       <!-- LEFT RAIL — vertical kanji -->
       <div class="hidden lg:flex lg:col-span-1 flex-col items-center pt-2">
@@ -106,7 +106,7 @@
       </div>
 
       <!-- MIDDLE — copy -->
-      <div class="lg:col-span-7">
+      <div class="lg:col-span-6">
         <div class="reveal flex items-center gap-3 text-st-cyan/80 mb-5">
           <span class="block w-8 h-px bg-st-cyan/60"></span>
           <span class="overline-latin text-[10px] font-semibold">一 ・ FIRST CHAPTER</span>
@@ -139,27 +139,31 @@
         </p>
       </div>
 
-      <!-- RIGHT — image + stamp + editorial date -->
-      <div class="lg:col-span-4">
-        <div class="player-frame reveal" data-parallax="0.6">
-          <span class="pf-corner pf-tl" aria-hidden="true"></span>
-          <span class="pf-corner pf-tr" aria-hidden="true"></span>
-          <span class="pf-corner pf-bl" aria-hidden="true"></span>
-          <span class="pf-corner pf-br" aria-hidden="true"></span>
+      <!-- RIGHT — poster: hinomaru + team image + stamp -->
+      <div class="lg:col-span-5">
+        <div class="poster-stage reveal" data-parallax="0.6">
+          <!-- Vertical editorial side text -->
+          <span class="poster-vside" aria-hidden="true">FOR OUR GREATEST STAGE</span>
 
-          <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=900&q=85"
-               alt="Footballer in motion"
-               onerror="this.src='https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&w=900&q=85'" />
+          <div class="player-frame">
+            <span class="pf-corner pf-tl" aria-hidden="true"></span>
+            <span class="pf-corner pf-tr" aria-hidden="true"></span>
+            <span class="pf-corner pf-bl" aria-hidden="true"></span>
+            <span class="pf-corner pf-br" aria-hidden="true"></span>
 
-          <!-- hanko stamp -->
-          <div class="hanko-stamp float-card" aria-hidden="true">
-            <span class="hanko-kanji">勝</span>
-          </div>
+            <img src="Assets/Images/hero-team.jpg"
+                 alt="日本代表 — Japan national football team" />
 
-          <!-- side label -->
-          <div class="pf-side-label">
-            <span class="dot"></span>
-            JAPAN × STARTRADER
+            <!-- hanko stamp -->
+            <div class="hanko-stamp" aria-hidden="true">
+              <span class="hanko-kanji">勝</span>
+            </div>
+
+            <!-- side label -->
+            <div class="pf-side-label">
+              <span class="dot"></span>
+              JAPAN × STARTRADER
+            </div>
           </div>
         </div>
 

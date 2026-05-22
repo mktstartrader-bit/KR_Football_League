@@ -223,16 +223,40 @@
 
   /* ====== Editorial hero — Japanese magazine style ====== */
 
-  /* Hinomaru-inspired soft disc in top-right of hero */
+  /* Soft cyan glow at top-right of hero */
   .hero-hinomaru {
     position: absolute;
-    top: 4%; right: -8%;
-    width: 520px; height: 520px;
+    top: -8%; right: -12%;
+    width: 620px; height: 620px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(22,233,215,0.18) 0%, rgba(22,233,215,0.04) 45%, transparent 70%);
+    background: radial-gradient(circle, rgba(22,233,215,0.22) 0%, rgba(0,71,187,0.10) 40%, transparent 70%);
     pointer-events: none;
     z-index: 0;
-    filter: blur(20px);
+    filter: blur(40px);
+  }
+
+  /* Poster stage — wraps the team image + editorial accents */
+  .poster-stage {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    aspect-ratio: 4/3;
+    will-change: transform;
+  }
+  /* Vertical "FOR OUR GREATEST STAGE" text on left of stage */
+  .poster-vside {
+    position: absolute;
+    top: 6%; left: -22px;
+    writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    color: rgba(22,233,215,0.65);
+    font-size: 0.7rem;
+    letter-spacing: 0.45em;
+    font-weight: 700;
+    text-transform: uppercase;
+    z-index: 6;
+    text-shadow: 0 0 10px rgba(13,13,75,0.9);
   }
 
   /* Top + bottom editorial rule */
@@ -297,24 +321,21 @@
     text-transform: uppercase;
   }
 
-  /* Player frame (replaces collage) */
+  /* Player frame — holds the team poster image */
   .player-frame {
     position: relative;
     width: 100%;
-    aspect-ratio: 4/5;
-    max-width: 440px;
-    margin: 0 auto;
-    border-radius: 4px;
+    height: 100%;
+    border-radius: 6px;
     overflow: hidden;
     background: #0D0D4B;
     box-shadow:
       0 30px 80px rgba(0,0,0,0.55),
-      0 0 0 1px rgba(22,233,215,0.20),
-      inset 0 0 0 1px rgba(255,255,255,0.05);
-    will-change: transform;
+      0 0 0 1.5px rgba(22,233,215,0.30),
+      inset 0 0 0 1px rgba(255,255,255,0.06);
   }
   .player-frame img {
-    width: 100%; height: 100%; object-fit: cover;
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
     transition: transform 8s ease-out;
   }
   .player-frame:hover img { transform: scale(1.04); }
@@ -322,8 +343,8 @@
     content: '';
     position: absolute; inset: 0;
     background:
-      linear-gradient(180deg, rgba(13,13,75,0.10) 0%, transparent 35%, rgba(13,13,75,0.65) 100%),
-      linear-gradient(120deg, rgba(0,71,187,0.25), transparent 50%);
+      linear-gradient(180deg, transparent 60%, rgba(13,13,75,0.55) 100%),
+      linear-gradient(120deg, rgba(13,13,75,0.20), transparent 40%);
     pointer-events: none;
   }
   /* Editorial corner ticks */
