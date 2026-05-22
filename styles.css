@@ -221,39 +221,246 @@
     will-change: transform;
   }
 
-  /* Hero player image collage */
-  .hero-collage {
+  /* ====== Editorial hero — Japanese magazine style ====== */
+
+  /* Hinomaru-inspired soft disc in top-right of hero */
+  .hero-hinomaru {
+    position: absolute;
+    top: 4%; right: -8%;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(22,233,215,0.18) 0%, rgba(22,233,215,0.04) 45%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(20px);
+  }
+
+  /* Top + bottom editorial rule */
+  .ed-rule {
+    display: flex; align-items: center;
+    gap: 18px;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .ed-rule-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(22,233,215,0.50), transparent);
+  }
+  .ed-chapter { color: var(--st-cyan); letter-spacing: 0.3em; font-weight: 700; }
+  .ed-label { color: rgba(255,255,255,0.85); letter-spacing: 0.3em; }
+  .ed-est { color: rgba(255,255,255,0.45); letter-spacing: 0.25em; }
+  .ed-scroll { display: inline-flex; align-items: center; gap: 12px; color: var(--st-cyan); font-weight: 700; }
+  .ed-scroll svg { animation: ed-scroll-bounce 1.8s ease-in-out infinite; }
+  @keyframes ed-scroll-bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(3px); opacity: 1; }
+  }
+  .ed-meta { color: rgba(255,255,255,0.45); letter-spacing: 0.25em; }
+
+  /* Vertical kanji rail */
+  .kanji-rail {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 14px;
+    font-family: "Noto Sans JP", serif;
+  }
+  .kanji-rail span {
+    color: rgba(255,255,255,0.65);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    position: relative;
+  }
+  .kanji-rail span:first-child {
+    color: var(--st-cyan);
+    font-size: 1.4rem;
+    text-shadow: 0 0 18px rgba(22,233,215,0.50);
+  }
+  .kanji-line {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(180deg, rgba(22,233,215,0.60), transparent);
+    margin: 18px auto 0;
+    display: block;
+  }
+  .vertical-text {
+    writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    letter-spacing: 0.5em;
+    color: rgba(22,233,215,0.65);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* Player frame (replaces collage) */
+  .player-frame {
     position: relative;
     width: 100%;
     aspect-ratio: 4/5;
-    max-width: 480px;
+    max-width: 440px;
     margin: 0 auto;
-  }
-  .hero-img-main, .hero-img-accent {
-    position: absolute;
-    border-radius: 18px;
+    border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    background: #0D0D4B;
+    box-shadow:
+      0 30px 80px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(22,233,215,0.20),
+      inset 0 0 0 1px rgba(255,255,255,0.05);
     will-change: transform;
   }
-  .hero-img-main { inset: 0; background: #0D0D4B; }
-  .hero-img-main img { width: 100%; height: 100%; object-fit: cover; }
-  .hero-img-main::after {
+  .player-frame img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 8s ease-out;
+  }
+  .player-frame:hover img { transform: scale(1.04); }
+  .player-frame::after {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(13,13,75,0.75) 100%),
-                linear-gradient(120deg, rgba(0,71,187,0.20), transparent 60%);
+    background:
+      linear-gradient(180deg, rgba(13,13,75,0.10) 0%, transparent 35%, rgba(13,13,75,0.65) 100%),
+      linear-gradient(120deg, rgba(0,71,187,0.25), transparent 50%);
     pointer-events: none;
   }
-  .hero-img-accent {
-    width: 50%;
-    aspect-ratio: 1/1;
-    right: -8%;
-    bottom: -8%;
-    border: 4px solid var(--st-dark);
-    z-index: 3;
+  /* Editorial corner ticks */
+  .pf-corner {
+    position: absolute;
+    width: 22px; height: 22px;
+    border-color: var(--st-cyan);
+    border-style: solid;
+    border-width: 0;
+    pointer-events: none;
+    z-index: 4;
   }
-  .hero-img-accent img { width: 100%; height: 100%; object-fit: cover; }
+  .pf-tl { top: 12px; left: 12px; border-top-width: 1.5px; border-left-width: 1.5px; }
+  .pf-tr { top: 12px; right: 12px; border-top-width: 1.5px; border-right-width: 1.5px; }
+  .pf-bl { bottom: 12px; left: 12px; border-bottom-width: 1.5px; border-left-width: 1.5px; }
+  .pf-br { bottom: 12px; right: 12px; border-bottom-width: 1.5px; border-right-width: 1.5px; }
+
+  .pf-side-label {
+    position: absolute;
+    bottom: 24px; left: 24px;
+    color: rgba(255,255,255,0.85);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    font-weight: 600;
+    text-transform: uppercase;
+    z-index: 4;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .pf-side-label .dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--st-cyan);
+    box-shadow: 0 0 10px var(--st-cyan);
+    animation: pf-dot-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pf-dot-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  /* Hanko (stamp) overlay */
+  .hanko-stamp {
+    position: absolute;
+    top: -22px; right: -22px;
+    width: 108px; height: 108px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35) 0%, transparent 50%),
+      linear-gradient(145deg, #16E9D7 0%, #0047BB 60%, #0D0D4B 100%);
+    border: 2.5px solid rgba(255,255,255,0.95);
+    box-shadow:
+      0 14px 30px rgba(0,0,0,0.45),
+      0 0 0 1px rgba(22,233,215,0.40),
+      inset 0 -8px 14px rgba(0,0,0,0.20);
+    transform: rotate(-12deg);
+    z-index: 5;
+    animation: hanko-press 5s ease-in-out infinite;
+  }
+  @keyframes hanko-press {
+    0%, 100% { transform: rotate(-12deg) scale(1); }
+    50% { transform: rotate(-9deg) scale(1.04); }
+  }
+  .hanko-kanji {
+    font-family: "Noto Sans JP", serif;
+    font-weight: 900;
+    font-size: 3rem;
+    color: #fff;
+    line-height: 1;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.40);
+    letter-spacing: 0;
+  }
+
+  /* Editorial date card */
+  .ed-date {
+    border-top: 1px solid rgba(22,233,215,0.30);
+    border-bottom: 1px solid rgba(22,233,215,0.30);
+    padding: 18px 4px;
+    position: relative;
+  }
+  .ed-date::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 0;
+    width: 36px; height: 3px;
+    background: var(--st-cyan);
+  }
+  .ed-date-top {
+    display: flex; align-items: center; justify-content: space-between;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .ed-date-prefix { color: var(--st-cyan); }
+  .ed-date-main {
+    display: flex; align-items: baseline; gap: 18px;
+    margin-top: 10px;
+  }
+  .ed-date-num {
+    font-size: clamp(54px, 6vw, 72px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .ed-date-meta {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .ed-date-dow {
+    color: var(--st-cyan);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    font-weight: 700;
+  }
+  .ed-date-time {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .ed-date-vs {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 14px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.85);
+    flex-wrap: wrap;
+  }
+  .ed-date-team { font-weight: 600; }
+  .ed-date-divider {
+    color: var(--st-cyan);
+    font-weight: 700;
+    margin: 0 4px;
+    opacity: 0.8;
+  }
 
   /* Particles */
   .particle {
@@ -812,7 +1019,12 @@
     .match-row { grid-template-columns: 1fr !important; text-align: center; gap: 14px; }
     .vs-block { justify-content: center; }
     .reward-win { transform: none; }
-    .hero-collage { max-width: 320px; }
+    .player-frame { max-width: 320px; }
+    .hanko-stamp { width: 84px; height: 84px; top: -16px; right: -16px; }
+    .hanko-kanji { font-size: 2.4rem; }
+    .ed-rule { font-size: 0.6rem; gap: 12px; }
+    .ed-est, .ed-meta { display: none; }
+    .ed-date-num { font-size: 48px; }
   }
 
   .text-ivory { color: rgba(255,255,255,0.85); }
